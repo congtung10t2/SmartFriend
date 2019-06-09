@@ -12,6 +12,7 @@
 		A4C7CB5F22901A9E0086BD75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C7CB5D22901A9E0086BD75 /* Main.storyboard */; };
 		A4C7CB6122901A9F0086BD75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4C7CB6022901A9F0086BD75 /* Assets.xcassets */; };
 		A4C7CB6422901A9F0086BD75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C7CB6222901A9F0086BD75 /* LaunchScreen.storyboard */; };
+		A4C7CB6D22901C480086BD75 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4C7CB6C22901C480086BD75 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A4C7CB6022901A9F0086BD75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4C7CB6322901A9F0086BD75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4C7CB6522901A9F0086BD75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4C7CB6C22901C480086BD75 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4C7CB6D22901C480086BD75 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				A4C7CB5822901A9E0086BD75 /* SmartFriend */,
 				A4C7CB5722901A9E0086BD75 /* Products */,
+				A4C7CB6B22901C480086BD75 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +66,14 @@
 				A4C7CB6522901A9F0086BD75 /* Info.plist */,
 			);
 			path = SmartFriend;
+			sourceTree = "<group>";
+		};
+		A4C7CB6B22901C480086BD75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A4C7CB6C22901C480086BD75 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -24,6 +24,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>Use to recognize audio voice to listen user request</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>To help user can record their voice</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

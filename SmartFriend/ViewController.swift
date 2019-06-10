@@ -11,23 +11,31 @@ import AVFoundation
 import Speech
 class ViewController: UIViewController {
     @IBOutlet weak var textRecord: UILabel!
-    let synth = AVSpeechSynthesizer()
+    
     var myUtterance = AVSpeechUtterance(string: "")
     var recognitionTask: SFSpeechRecognitionTask?
-    let audioEngine = AVAudioEngine()
-    @IBOutlet weak var textView: UITextView!
+    var audioEngine: AVAudioEngine?;
+    var request: SFSpeechAudioBufferRecognitionRequest?;
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         
         // Do any additional setup after loading the view.
       
     }
     @IBAction func speakToText(_ sender: Any) {
-        
-        audioEngine.prepare();
+        audioEngine = AVAudioEngine()
+        request = SFSpeechAudioBufferRecognitionRequest()
+        let node = audioEngine?.inputNode;
+        let recordingFormat = node?.outputFormat(forBus: 0)
+        node!.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat, block: { buffer, _  in
+            self.request!.append(buffer);
+        })
+        audioEngine?.prepare();
         do {
-           try audioEngine.start()
+            try audioEngine?.start()
         } catch {
             print(error);
         }
@@ -38,13 +46,9 @@ class ViewController: UIViewController {
         if !speechRecognizer.isAvailable {
             print("not available");
         }
-        let request = SFSpeechAudioBufferRecognitionRequest()
-        let node = audioEngine.inputNode;
-        let recordingFormat = node.outputFormat(forBus: 0)
-        node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat, block: { buffer, _  in
-            request.append(buffer);
-        })
-        self.recognitionTask = speechRecognizer.recognitionTask(with: request, resultHandler: { result, error in
+ 
+        
+        self.recognitionTask = speechRecognizer.recognitionTask(with: request!, resultHandler: { result, error in
             if let result = result {
                 self.textRecord.text = result.bestTranscription.formattedString;
             } else if let error = error {
@@ -61,8 +65,12 @@ class ViewController: UIViewController {
         
     }
     @IBAction func textToSpeak(_ sender: Any) {
-        myUtterance = AVSpeechUtterance(string: textView.text)
+        self.audioEngine?.stop();
+        self.textRecord.layoutIfNeeded();
+        myUtterance = AVSpeechUtterance(string: self.textRecord.text!)
         myUtterance.rate = 0.3
+        
+        let synth = AVSpeechSynthesizer()
         synth.speak(myUtterance)
     }
     

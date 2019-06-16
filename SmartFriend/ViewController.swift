@@ -66,14 +66,22 @@ class ViewController: UIViewController {
     }
     @IBAction func textToSpeak(_ sender: Any) {
         self.audioEngine?.stop();
+        recognitionTask?.cancel();
         self.textRecord.layoutIfNeeded();
+        
         myUtterance = AVSpeechUtterance(string: self.textRecord.text!)
-        myUtterance.rate = 0.3
+        myUtterance.rate = AVSpeechUtteranceDefaultSpeechRate;
         
         let synth = AVSpeechSynthesizer()
+        myUtterance.volume = 1.0;
         synth.speak(myUtterance)
     }
     
-
+    @IBAction func clearText(_ sender: Any) {
+        
+        recognitionTask?.cancel();
+        self.textRecord.text = "";
+    }
+    
 }
 

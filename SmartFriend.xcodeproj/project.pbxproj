@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0406C69822DFFF4C003EB5C0 /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406C69722DFFF4C003EB5C0 /* SpeechService.swift */; };
+		0406C69B22E0151B003EB5C0 /* SpeechDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406C69A22E0151B003EB5C0 /* SpeechDelegate.swift */; };
 		A4C7CB5A22901A9E0086BD75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7CB5922901A9E0086BD75 /* AppDelegate.swift */; };
 		A4C7CB5C22901A9E0086BD75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C7CB5B22901A9E0086BD75 /* ViewController.swift */; };
 		A4C7CB5F22901A9E0086BD75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4C7CB5D22901A9E0086BD75 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0406C69722DFFF4C003EB5C0 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
+		0406C69A22E0151B003EB5C0 /* SpeechDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechDelegate.swift; sourceTree = "<group>"; };
 		A4C7CB5622901A9E0086BD75 /* SmartFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4C7CB5922901A9E0086BD75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4C7CB5B22901A9E0086BD75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +42,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0406C69922E01501003EB5C0 /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				0406C69722DFFF4C003EB5C0 /* SpeechService.swift */,
+				0406C69A22E0151B003EB5C0 /* SpeechDelegate.swift */,
+			);
+			path = Speech;
+			sourceTree = "<group>";
+		};
+		04922AB522DF0D8C004A81C8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0406C69922E01501003EB5C0 /* Speech */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A4C7CB4D22901A9E0086BD75 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +79,7 @@
 		A4C7CB5822901A9E0086BD75 /* SmartFriend */ = {
 			isa = PBXGroup;
 			children = (
+				04922AB522DF0D8C004A81C8 /* Services */,
 				A4C7CB5922901A9E0086BD75 /* AppDelegate.swift */,
 				A4C7CB5B22901A9E0086BD75 /* ViewController.swift */,
 				A4C7CB5D22901A9E0086BD75 /* Main.storyboard */,
@@ -149,6 +171,8 @@
 			files = (
 				A4C7CB5C22901A9E0086BD75 /* ViewController.swift in Sources */,
 				A4C7CB5A22901A9E0086BD75 /* AppDelegate.swift in Sources */,
+				0406C69B22E0151B003EB5C0 /* SpeechDelegate.swift in Sources */,
+				0406C69822DFFF4C003EB5C0 /* SpeechService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

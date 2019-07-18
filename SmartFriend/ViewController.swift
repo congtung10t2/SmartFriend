@@ -10,6 +10,10 @@ import UIKit
 import AVFoundation
 import Speech
 class ViewController: UIViewController {
+ 
+    
+    
+    
     @IBOutlet weak var textRecord: UILabel!
     
     var myUtterance = AVSpeechUtterance(string: "")
@@ -26,48 +30,13 @@ class ViewController: UIViewController {
       
     }
     @IBAction func speakToText(_ sender: Any) {
-        audioEngine = AVAudioEngine()
-        request = SFSpeechAudioBufferRecognitionRequest()
-        let node = audioEngine?.inputNode;
-        let recordingFormat = node?.outputFormat(forBus: 0)
-        node!.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat, block: { buffer, _  in
-            self.request!.append(buffer);
-        })
-        audioEngine?.prepare();
-        do {
-            try audioEngine?.start()
-        } catch {
-            print(error);
-        }
-        guard let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US")) else {
-            print("speech recognize not initizale");
-            return
-        }
-        if !speechRecognizer.isAvailable {
-            print("not available");
-        }
- 
-        
-        self.recognitionTask = speechRecognizer.recognitionTask(with: request!, resultHandler: { result, error in
-            if let result = result {
-                self.textRecord.text = result.bestTranscription.formattedString;
-            } else if let error = error {
-                print(error);
-            }
-        })
-        
-    }
-    func recordAndRecognizeSpeech(){
-        
-        
-        
-        
-        
+        SpeechService.shared.stop();
+        SpeechService.shared.start(self);
     }
     @IBAction func textToSpeak(_ sender: Any) {
         self.audioEngine?.stop();
         recognitionTask?.cancel();
-        self.textRecord.layoutIfNeeded();
+        
         
         myUtterance = AVSpeechUtterance(string: self.textRecord.text!)
         myUtterance.rate = AVSpeechUtteranceDefaultSpeechRate;
@@ -79,9 +48,34 @@ class ViewController: UIViewController {
     
     @IBAction func clearText(_ sender: Any) {
         
-        recognitionTask?.cancel();
         self.textRecord.text = "";
     }
     
 }
 
+extension ViewController : SpeechDelegate {
+    func onStart() {
+        self.textRecord.text = "";
+    }
+    
+    func onResults(results: String, isFinal: Bool) {
+        
+        self.textRecord.text = results;
+        self.textRecord.layoutIfNeeded();
+    }
+    
+    func onError(error: NSError) {
+        
+    }
+    
+    func onPartialResults(partialResults: String) {
+        self.textRecord.text = partialResults;
+        self.textRecord.layoutIfNeeded();
+    }
+    
+    func onStop() {
+        
+    }
+    
+    
+}
